@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tareas por Usuario</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .nav-links {
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .user-select {
+            margin: 20px 0;
+            padding: 10px;
+        }
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/tasks">Todas las Tareas</a>
+        <a href="/user_tasks">Tareas por Usuario</a>
+    </div>
+
+    <h1>Tareas por Usuario</h1>
+    
+    <div class="user-select">
+        <form method="get">
+            <select name="user_id">
+                <option value="">Seleccione un usuario</option>
+                {% for user in users %}
+                <option value="{{ user.id }}" {% if selected_user_id and selected_user_id|string == user.id|string %}selected{% endif %}>
+                    {{ user.nombre }} {{ user.apellido }} (DNI: {{ user.dni }})
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Ver Tareas</button>
+        </form>
+    </div>
+
+    {% if selected_user_id %}
+        {% if tasks %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Este usuario no tiene tareas asignadas.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

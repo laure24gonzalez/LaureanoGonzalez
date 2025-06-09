@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datos Personales</title>
+</head>
+<body>
+    <h1>Mis Datos Personales</h1>
+    {% if datos %}
+        <p><strong>Nombre:</strong> {{ datos.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ datos.apellido }}</p>
+        <p><strong>Dirección:</strong> {{ datos.direccion }}</p>
+        <p><strong>DNI:</strong> {{ datos.dni }}</p>
+    {% else %}
+        <p>No se encontraron datos</p>
+    {% endif %}
+</body>
+</html>

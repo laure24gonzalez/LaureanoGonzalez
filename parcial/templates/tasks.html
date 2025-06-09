@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .nav-links {
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .filter-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .filter-section select {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .filter-section button {
+            padding: 5px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .filter-section button:hover {
+            background-color: #0056b3;
+        }
+        .clear-filter {
+            margin-left: 10px;
+            color: #dc3545;
+            text-decoration: none;
+        }
+        .clear-filter:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/tasks">Todas las Tareas</a>
+        <a href="/user_tasks">Tareas por Usuario</a>
+    </div>
+
+    <h1>Lista de Todas las Tareas</h1>
+    
+    <div class="filter-section">
+        <form method="get">
+            <label for="status">Filtrar por estado:</label>
+            <select name="status" id="status">
+                <option value="">Todos los estados</option>
+                <option value="pending" {% if status == 'pending' %}selected{% endif %}>Pendiente</option>
+                <option value="in_progress" {% if status == 'in_progress' %}selected{% endif %}>En Progreso</option>
+                <option value="completed" {% if status == 'completed' %}selected{% endif %}>Completado</option>
+            </select>
+            <button type="submit">Filtrar</button>
+            {% if status %}
+                <a href="/tasks" class="clear-filter">Limpiar filtro</a>
+            {% endif %}
+        </form>
+    </div>
+    
+    {% if tasks %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>ID Usuario</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.user_id }}</td>
+                    <td>{{ task.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay tareas disponibles.</p>
+    {% endif %}
+</body>
+</html>

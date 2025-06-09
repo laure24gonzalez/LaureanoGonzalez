@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1° Parcial Programación</title>
+    <style>
+        .nav-links {
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/tasks">Ver Todas las Tareas</a>
+        <a href="/user_tasks">Ver Tareas por Usuario</a>
+    </div>
+
+    <h1>1° Parcial Programación</h1>
+    <p>Bienvenido al primer parcial de programación. Aquí encontrarás los temas que se evaluarán.</p>
+    
+    <h2>Temas a Evaluar</h2>
+    <ul>
+        <li>Puesta en Marchas de un proyecto de Flask</li>
+        <li>Devolucion de Datos de los endpoint de una API</li>
+        <li>Uso de los endpoints en rutas de la App</li>
+        <li>Manejo de errores</li>
+        <li>Visualizacion de los datos en Templates de Flask</li>
+    </ul>
+
+    <h2 style="font-weight: bold;">Puntos a Desarrollar</h2>
+    <ol>
+        <li>Haga en lugar de aparecer "alumno" en el footer, se vea su apellido y nombre</li>
+        <li>Agregar una ruta y un template que muestre todos los usuarios</li>
+        <li>En el template de <a href="/tasks">Ver Todas las Tareas</a> hacer que los estados de cada tarea no aparezcan con el valor de la base de datos sino con el valor que se muestra en el desplegable de filtros</li>
+        <li>Crear el metodo delete para los Tasks</li>
+    </ol>
+
+
+    <h2>Recursos Adicionales</h2>
+    <p>Puedes consultar los siguientes recursos para prepararte:</p>
+    <ul>
+        <li><a href="https://flask.palletsprojects.com/en/stable/">Flask</a></li>
+        <li><a href="https://flask-restful.readthedocs.io/en/latest/">Flask Rest-Full</a></li>
+    </ul>
+
+    <footer>
+        <p>&copy; 2025 Soy {{ name }} Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
